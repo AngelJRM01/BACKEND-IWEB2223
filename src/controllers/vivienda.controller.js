@@ -183,3 +183,54 @@ exports.findOverRating = (req, res) => {
             res.status(500).send({ message: "Error retrieving Viviendas over " + valoracion + "of rating"});
       });
 }
+
+exports.findGuestsOfOwner = (req, res) => {
+  const { id } = req.params;
+  var query = {"propietario.id": id};
+  var coleccion = [];
+  var maxData=0;
+  var maxData2=0;
+  var intData=0;
+  var intData2=0;
+  var vecesEnviado = 0;
+
+  Vivienda.find(query)
+      .then(data => {
+          if(data){
+            maxData = data.length;
+            data.map(d => {
+              query = {"vivienda.id" : d._id};
+              Reserva.find(query)
+                  .then(data2 => {
+                      if(data2){
+                        intData = intData + 1;
+                        maxData2 = data2.length;
+                        intData2 = 0;
+                        data2.map(d2 => {
+                          intData2 = intData2 + 1;
+                          coleccion.push(d2.persona);
+                          if(intData2 === maxData2 && intData === maxData && vecesEnviado === 0){
+                            vecesEnviado++;
+                            res.send(coleccion)
+                          }
+                        })
+                      }
+                  })
+            })
+          };
+      })
+}
+
+exports.findGuest = (req, res) => {
+  const { id } = req.params;
+  var query = {"propietario.id": id};
+  let coleccion = [];
+
+  Vivienda.find(query)
+      .then(data => {
+          if(data){
+              
+                          res.send(data);
+        };
+      })
+}

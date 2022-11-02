@@ -26,10 +26,16 @@ router.get('/estado/:estado', viviendas.findByEstado);
 // Retrieve all viviendas under a price. Galo
 router.get('/precio/:precio', viviendas.findUnderPrice);
 
-// Retrieve all gests from a vivienda
+// Retrieve all guests from a vivienda
 router.get('/:id/huespedes', viviendas.findGuests);
 
 // Retrieve all viviendas over a price
 router.get('/valoracion/:valoracion', viviendas.findOverRating);
+
+// Retrieve all guests from a owner
+router.get('/propietario/:id', viviendas.findGuestsOfOwner);
+
+// Retrieve all guests from a owner
+router.get('/propietario2/:id', viviendas.findGuest);
 
 module.exports = router;
