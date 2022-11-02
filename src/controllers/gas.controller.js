@@ -28,9 +28,9 @@ exports.findCheaperInLocalidad = (req, res) => {
 
     const tipoGasolina = "Precio " + req.params.tipoGasolina;
 
-    var gas = Gas.ListaEESSPrecio.filter( g => g.Localidad == localidad);
+    let gas = Gas.ListaEESSPrecio.filter( g => g.Localidad == localidad);
 
-    var min = gas[0][tipoGasolina];
+    let min = gas[0][tipoGasolina];
 
     gas.forEach(g => {
         if(min > g[tipoGasolina] && g[tipoGasolina] != ""){
@@ -53,7 +53,7 @@ exports.findCheaperInLocalidad = (req, res) => {
 
     const tipoGasolina = "Precio " + req.params.tipoGasolina;
 
-    var gas = Gas.ListaEESSPrecio.filter( g => g.Localidad == localidad);
+    let gas = Gas.ListaEESSPrecio.filter( g => g.Localidad == localidad);
     
     gas = gas.filter(g => g[tipoGasolina] == Math.min(gas[tipoGasolina])).map(g => {
         return {

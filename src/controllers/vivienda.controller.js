@@ -27,7 +27,7 @@ exports.create = (req, res) => {
 }
 
 exports.findAll = (req, res) => {
-    var query = {};
+    let query = {};
 
     const { direccion } = req.query;
 
@@ -109,7 +109,7 @@ exports.delete = (req, res) => {
 
 exports.findReservas = (req, res) => {
   const { id } = req.params;
-  var query = {"vivienda._id": id};
+  let query = {"vivienda._id": id};
 
   Reserva.find(query)
       .then(data => {
@@ -125,7 +125,7 @@ exports.findReservas = (req, res) => {
 //Angel FC
 exports.findByEstado = (req, res) => {
   const estado = req.params.estado;
-  var query = {"estado": estado};
+  let query = {"estado": estado};
 
   Vivienda.find(query)
       .then(data => {
@@ -141,7 +141,7 @@ exports.findByEstado = (req, res) => {
 // Galo
 exports.findUnderPrice = (req, res) => {
   const { precio } = req.params;
-  var query = {"precioNoche": {$lte: precio}};
+  let query = {"precioNoche": {$lte: precio}};
 
   Vivienda.find(query)
       .then(data => {
@@ -156,7 +156,7 @@ exports.findUnderPrice = (req, res) => {
 
 exports.findGuests = (req, res) => {
   const { id } = req.params;
-  var query = {"vivienda._id": id};
+  let query = {"vivienda._id": id};
 
   Reserva.find(query)
       .then(data => {
@@ -171,7 +171,7 @@ exports.findGuests = (req, res) => {
 
 exports.findOverRating = (req, res) => {
   const { valoracion } = req.params;
-  var query = {"valoracion": {$gt: valoracion}};
+  let query = {"valoracion": {$gt: valoracion}};
 
   Vivienda.find(query)
       .then(data => {
@@ -186,13 +186,13 @@ exports.findOverRating = (req, res) => {
 
 exports.findGuestsOfOwner = (req, res) => {
   const { id } = req.params;
-  var query = {"propietario.id": id};
-  var coleccion = [];
-  var maxData=0;
-  var maxData2=0;
-  var intData=0;
-  var intData2=0;
-  var vecesEnviado = 0;
+  let query = {"propietario.id": id};
+  let coleccion = [];
+  let maxData=0;
+  let maxData2=0;
+  let intData=0;
+  let intData2=0;
+  let vecesEnviado = 0;
 
   Vivienda.find(query)
       .then(data => {
@@ -223,7 +223,7 @@ exports.findGuestsOfOwner = (req, res) => {
 
 exports.findGuest = (req, res) => {
   const { id } = req.params;
-  var query = {"propietario.id": id};
+  let query = {"propietario.id": id};
   let coleccion = [];
 
   Vivienda.find(query)
