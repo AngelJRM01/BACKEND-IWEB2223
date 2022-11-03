@@ -214,23 +214,27 @@ exports.findGuestsOfOwner = (req, res) => {
                             res.send(coleccion)
                           }
                         })
+                      } else {
+                        res.status(404).send({message: "Not found Reservas of Vivienda of Owner " + id});
                       }
                   })
             })
-          };
+          } else {
+            res.status(404).send({message: "Not found Viviendas of Owner " + id});
+          }
       })
 }
 
 exports.findGuest = (req, res) => {
   const { id } = req.params;
   let query = {"propietario.id": id};
-  let coleccion = [];
 
   Vivienda.find(query)
       .then(data => {
           if(data){
-              
-                          res.send(data);
-        };
+            res.send(data);
+          } else {
+            res.status(404).send({message: "Not found Viviendas of Owner " + id});
+          }
       })
 }
