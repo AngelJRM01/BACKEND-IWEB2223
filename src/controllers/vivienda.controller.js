@@ -185,56 +185,55 @@ exports.findOverRating = (req, res) => {
 }
 
 exports.findGuestsOfOwner = (req, res) => {
-  const { id } = req.params;
-  let query = {"propietario.id": id};
-  let coleccion = [];
-  let maxData=0;
-  let maxData2=0;
-  let intData=0;
-  let intData2=0;
-  let vecesEnviado = 0;
+    const { id } = req.params;
+    let query = {"propietario.id": id};
+    let coleccion = [];
+    let vecesEnviado = 0;
+    let intData = 0;
 
-  Vivienda.find(query)
-      .then(data => {
-          if(data){
-            maxData = data.length;
-            data.map(d => {
-              query = {"vivienda.id" : d._id};
-              Reserva.find(query)
-                  .then(data2 => {
-                      if(data2){
-                        intData = intData + 1;
-                        maxData2 = data2.length;
-                        intData2 = 0;
-                        data2.map(d2 => {
-                          intData2 = intData2 + 1;
-                          coleccion.push(d2.persona);
-                          if(intData2 === maxData2 && intData === maxData && vecesEnviado === 0){
-                            vecesEnviado++;
-                            res.send(coleccion)
-                          }
-                        })
-                      } else {
-                        res.status(404).send({message: "Not found Reservas of Vivienda of Owner " + id});
-                      }
-                  })
-            })
-          } else {
-            res.status(404).send({message: "Not found Viviendas of Owner " + id});
-          }
-      })
+    Vivienda.find(query)
+        .then(data => {
+            if(data.length == 0){
+              res.status(404).send({message: "Not found Viviendas of Owner " + id});
+            } else {
+              data.map(d => {
+                query = {"vivienda.id" : d._id};
+                Reserva.find(query)
+                    .then(data2 => {
+                        intData++;
+                        if(data2.length == 0){
+                          res.status(404).send({message: "Not found Reservas of Vivienda of Owner " + id});
+                        } else{
+                          data2.map((d2, index2) => {
+                            coleccion.push(d2.persona);
+                            if(index2 == data2.length-1 && intData == data.length && vecesEnviado == 0){
+                              vecesEnviado++;
+                              res.send(coleccion)
+                            }
+                          })
+                        }
+                    })
+                    .catch(err => {
+                      res.status(500).send({ message: "Error retrieving Reservas of Viviendas of Owner " + id });
+                    });
+              })
+            }
+        })
+        .catch(err => {
+              res.status(500).send({ message: "Error retrieving Viviendas of Owner " + id});
+        });
 }
 
-exports.findGuest = (req, res) => {
+exports.findViviendasOfOwner = (req, res) => {
   const { id } = req.params;
   let query = {"propietario.id": id};
 
   Vivienda.find(query)
       .then(data => {
-          if(data){
-            res.send(data);
-          } else {
+          if(data.length == 0){
             res.status(404).send({message: "Not found Viviendas of Owner " + id});
+          } else {
+            res.send(data);
           }
       })
 }
