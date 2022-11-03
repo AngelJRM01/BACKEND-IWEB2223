@@ -33,9 +33,9 @@ router.get('/:id/huespedes', viviendas.findGuests);
 router.get('/valoracion/:valoracion', viviendas.findOverRating);
 
 // Retrieve all guests from a owner
-router.get('/propietario/:id', viviendas.findGuestsOfOwner);
+router.get('/propietarioHuespedes/:id', viviendas.findGuestsOfOwner);
 
 // Retrieve all guests from a owner
-router.get('/propietario2/:id', viviendas.findGuest);
+router.get('/propietario/:id', viviendas.findViviendasOfOwner);
 
 module.exports = router;
