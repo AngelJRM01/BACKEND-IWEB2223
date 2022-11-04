@@ -189,39 +189,44 @@ exports.findGuestsOfOwner = (req, res) => {
     let query = {"propietario.id": id};
     let coleccion = [];
     let vecesEnviado = 0;
-    let intData = 0;
-
+    let intData = 0;  
+    
     Vivienda.find(query)
-        .then(data => {
-            if(data.length == 0){
-              res.status(404).send({message: "Not found Viviendas of Owner " + id});
-            } else {
-              data.map(d => {
-                query = {"vivienda.id" : d._id};
-                Reserva.find(query)
-                    .then(data2 => {
-                        intData++;
-                        if(data2.length == 0){
-                          res.status(404).send({message: "Not found Reservas of Vivienda of Owner " + id});
-                        } else{
-                          data2.map((d2, index2) => {
-                            coleccion.push(d2.persona);
-                            if(index2 == data2.length-1 && intData == data.length && vecesEnviado == 0){
-                              vecesEnviado++;
-                              res.send(coleccion)
-                            }
-                          })
+      .then(data => {
+        if(data.length == 0){
+          res.status(404).send({message: "Not found Viviendas of Owner " + id});
+        } else {
+          data.map(d => {
+            let query2 = {"vivienda.id" : d._id};
+            Reserva.find(query2)
+                .then(data2 => {
+                    intData++;
+                    if(data2.length != 0){
+                      data2.map((d2, index2) => {
+                        coleccion.push(d2.persona);
+                        console.log(intData)
+                        if(index2 == data2.length-1 && intData == data.length && vecesEnviado == 0){
+                          vecesEnviado++;
+                          res.send(coleccion)
                         }
-                    })
-                    .catch(err => {
-                      res.status(500).send({ message: "Error retrieving Reservas of Viviendas of Owner " + id });
-                    });
-              })
-            }
-        })
-        .catch(err => {
-              res.status(500).send({ message: "Error retrieving Viviendas of Owner " + id});
-        });
+                      })
+                    } else {
+                      if(intData == data.length && vecesEnviado == 0){
+                        vecesEnviado++;
+                        res.send(coleccion)
+                      }
+                    }
+                })
+                .catch(err => {
+                  res.status(500).send({ message: "Error retrieving Reservas of Viviendas of Owner " + id });
+                });
+          })
+        }
+      })
+      .catch(err => {
+            res.status(500).send({ message: "Error retrieving Viviendas of Owner " + id});
+      });
+
 }
 
 exports.findViviendasOfOwner = (req, res) => {
