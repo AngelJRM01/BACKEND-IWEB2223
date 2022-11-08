@@ -1,0 +1,559 @@
+{
+	"info": {
+		"_postman_id": "4f3fdcab-8457-4266-8a0d-3e4c6778995a",
+		"name": "Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21354009"
+	},
+	"item": [
+		{
+			"name": "/viviendas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"capacidad\": 5,\n    \"descripcion\": \"descripcion\",\n    \"direccion\": \"direccion\",\n    \"estado\": \"ocupado\",\n    \"fechasDisponibles\": [\n        {\n            \"fechaInicio\": \"2012-04-23T18:25:43.511+00:00\",\n            \"fechaFin\": \"2012-05-23T18:25:43.511+00:00\"\n        }\n    ],\n    \"imagenes\": [\n        \"link1\",\n        \"link2\",\n        \"link3\"\n    ],\n    \"precioNoche\": 22.5,\n    \"titulo\": \"titulo\",\n    \"valoracion\": 3.5,\n    \"propietario\": {\n        \"id\": \"1\",\n        \"nombre\": \"Nombre\",\n        \"foto\": \"Link foto\"\n    },\n    \"coordenadas\": {\n        \"latitud\": 0,\n        \"longitud\": 0\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base:url}}/viviendas",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"capacidad\": 12,\n    \"descripcion\": \"descripcion\",\n    \"direccion\": \"direccion\",\n    \"estado\": \"ocupado\",\n    \"fechasDisponibles\": [\n        {\n            \"fechaInicio\": \"2012-04-23T18:25:43.511+00:00\",\n            \"fechaFin\": \"2012-04-23T18:25:43.511+00:00\"\n        }\n    ],\n    \"imagenes\": [\n        \"link1\",\n        \"link2\",\n        \"link3\"\n    ],\n    \"precioNoche\": 2.0,\n    \"titulo\": \"titulo\",\n    \"valoracion\": 3.5,\n    \"propietario\": {\n        \"nombre\": \"Nombre\",\n        \"foto\": \"Link foto\"\n    },\n    \"coordenadas\": {\n        \"latitud\": 0,\n        \"longitud\": 0\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base:url}}/viviendas/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63681e6b3011712d0e07435b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636a299aff136aa9e85f2409"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63681e6b3011712d0e07435b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/{id}/reservas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/:id/reservas",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						":id",
+						"reservas"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63681e6b3011712d0e07435b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/{id}/huespedes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/:id/huespedes",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						":id",
+						"huespedes"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63681e6b3011712d0e07435b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas?direccion={direccion}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas?direccion=direccion",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas"
+					],
+					"query": [
+						{
+							"key": "direccion",
+							"value": "direccion"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/estado/{estado}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/estado/:estado",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"estado",
+						":estado"
+					],
+					"variable": [
+						{
+							"key": "estado",
+							"value": "ocupado"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/precio/{precio}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/precio/:precio",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"precio",
+						":precio"
+					],
+					"variable": [
+						{
+							"key": "precio",
+							"value": "2.4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/valoracion/{valoracion}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/valoracion/:valoracion",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"valoracion",
+						":valoracion"
+					],
+					"variable": [
+						{
+							"key": "valoracion",
+							"value": "3.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/propietarioHuespedes/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/propietarioHuespedes/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"propietarioHuespedes",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/propietario/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/propietario/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"propietario",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reservas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/reservas",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reservas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fecha\": \"2012-04-23T18:25:43.511+00:00\",\n    \"estancia\": {\n        \"fechaInicio\": \"2012-04-23T18:25:43.511+00:00\",\n        \"fechaFin\": \"2012-05-23T18:25:43.511+00:00\"\n    },\n    \"persona\": {\n        \"id\": \"63630c626e8903761fed6830\",\n        \"nombre\": \"Nombre\",\n        \"foto\": \"link1\"\n    },\n    \"ocupantes\": 10,\n    \"vivienda\": {\n        \"_id\": \"63681e9f3011712d0e074360\",\n        \"id\": \"63681e9f3011712d0e074360\",\n        \"titulo\": \"titulo\",\n        \"direccion\": \"direccion\",\n        \"imagenes\": [\n            \"link1\",\n            \"link2\",\n            \"link3\"\n        ]\n    },\n    \"precio\": 20\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base:url}}/reservas",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reservas/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fecha\" : \"2012-04-23T18:25:43.511+00:00\",\n    \"estancia\" : \n    {\n        \"fechaInicio\" : \"2012-04-23T18:25:43.511+00:00\",\n        \"fechaFin\" : \"2012-04-23T18:25:43.511+00:00\"\n    },\n    \"ocupantes\" : 12,\n    \"vivienda\" :\n    {\n        \"titulo\" : \"titulo\",\n        \"direccion\" : \"direccion\",\n        \"imagenes\" : [\"link1\", \"link2\", \"link3\"]\n    },\n    \"precio\" : 22,\n    \"persona\" :\n    {\n        \"nombre\" : \"Nombre\",\n        \"foto\" : \"link1\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base:url}}/reservas/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"reservas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63681ec83011712d0e074368"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reservas/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/reservas/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"reservas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636a29b4ff136aa9e85f240e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reservas/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/reservas/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"reservas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63681ec83011712d0e074368"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reservas/{id}/vivienda",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/reservas/:id/vivienda",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"reservas",
+						":id",
+						"vivienda"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63681ec83011712d0e074368"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reservas/antiguedad/{fecha}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/reservas/antiguedad/:fecha",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"reservas",
+						"antiguedad",
+						":fecha"
+					],
+					"variable": [
+						{
+							"key": "fecha",
+							"value": "2000-12-31T23:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reservas/estacia/{fechaInicio}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/reservas/estancia/:fechaInicio",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"reservas",
+						"estancia",
+						":fechaInicio"
+					],
+					"variable": [
+						{
+							"key": "fechaInicio",
+							"value": "2011-12-31T23:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base:url",
+			"value": "http://localhost:4000"
+		}
+	]
+}
