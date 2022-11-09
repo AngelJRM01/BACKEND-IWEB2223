@@ -204,7 +204,7 @@ exports.findGuestsOfOwner = (req, res) => {
                     if(data2.length != 0){
                       data2.map((d2, index2) => {
                         coleccion.push(d2.persona);
-                        console.log(intData)
+                        //console.log(intData)
                         if(index2 == data2.length-1 && intData == data.length && vecesEnviado == 0){
                           vecesEnviado++;
                           res.send(coleccion)
