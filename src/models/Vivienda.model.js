@@ -6,6 +6,7 @@ const FechasDisponibles = {
 }
 
 const Propietario = {
+    id : String,
     nombre : String,
     foto : String
 }

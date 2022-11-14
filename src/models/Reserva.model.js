@@ -5,12 +5,14 @@ const Estancia = {
     fechaFinal : Date
 }
 
-const Huesped = {
+const Persona = {
+    id: String,
     nombre : String,
     foto : String
 }
 
 const Vivienda = {
+    id: String,
     titulo : String,
     direccion : String,
     imagenes : [String]
@@ -25,8 +27,8 @@ const ReservaSchema = new Schema({
         type: Estancia,
         required: true
     },
-    huesped: {
-        type: Huesped,
+    persona: {
+        type: Persona,
         required: true
     },
     ocupantes: {
