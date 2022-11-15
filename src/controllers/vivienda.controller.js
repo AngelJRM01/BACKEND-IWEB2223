@@ -197,7 +197,7 @@ exports.findGuestsOfOwner = (req, res) => {
           res.status(404).send({message: "Not found Viviendas of Owner " + id});
         } else {
           data.map(d => {
-            let query2 = {"vivienda.id" : d._id};
+            let query2 = {"vivienda._id" : d._id};
             Reserva.find(query2)
                 .then(data2 => {
                     intData++;
@@ -231,7 +231,7 @@ exports.findGuestsOfOwner = (req, res) => {
 
 exports.findViviendasOfOwner = (req, res) => {
   const { id } = req.params;
-  let query = {"propietario.id": id};
+  let query = {"propietario._id": id};
 
   Vivienda.find(query)
       .then(data => {
