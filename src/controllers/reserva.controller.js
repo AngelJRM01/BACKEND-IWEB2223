@@ -54,7 +54,7 @@ exports.findOne = (req, res) => {
 exports.findByAntique = (req, res) => {
     const fecha = req.params.fecha;
 
-    var query = {
+    let query = {
         "fecha" : {$lte : fecha}
     };
 
@@ -103,7 +103,7 @@ exports.delete = (req, res) => {
                 res.status(404).sen
     fecha.d({
                   e: `Cannot dee lete Res
-    //var query = {"fecha": {$gte: ISODate(fecha)}};erva with id=${id}. Maybe Reserva was not found!`
+    //let query = {"fecha": {$gte: ISODate(fecha)}};erva with id=${id}. Maybe Reserva was not found!`
                 });
             } else {
                 res.send({
@@ -121,7 +121,7 @@ exports.delete = (req, res) => {
 //Angel FC
 exports.findByFutureDate = (req, res) => {
     const fechaInicio = req.params.fechaInicio;
-    var query = {"estancia.fechaInicio": {$gt:fechaInicio}};
+    let query = {"estancia.fechaInicio": {$gt:fechaInicio}};
   
     Reserva.find(query)
         .then(data => {

@@ -5,7 +5,6 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 const uri = process.env.MONGODB_URI;
-console.log(process.env.MONGODB_URI);
 
 async function connectMongoose(){
     await mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {

@@ -27,7 +27,7 @@ exports.create = (req, res) => {
 }
 
 exports.findAll = (req, res) => {
-    var query = {};
+    let query = {};
 
     const { direccion } = req.query;
 
@@ -109,7 +109,7 @@ exports.delete = (req, res) => {
 
 exports.findReservas = (req, res) => {
   const { id } = req.params;
-  var query = {"vivienda._id": id};
+  let query = {"vivienda._id": id};
 
   Reserva.find(query)
       .then(data => {
@@ -125,7 +125,7 @@ exports.findReservas = (req, res) => {
 //Angel FC
 exports.findByEstado = (req, res) => {
   const estado = req.params.estado;
-  var query = {"estado": estado};
+  let query = {"estado": estado};
 
   Vivienda.find(query)
       .then(data => {
@@ -141,7 +141,7 @@ exports.findByEstado = (req, res) => {
 // Galo
 exports.findUnderPrice = (req, res) => {
   const { precio } = req.params;
-  var query = {"precioNoche": {$lte: precio}};
+  let query = {"precioNoche": {$lte: precio}};
 
   Vivienda.find(query)
       .then(data => {
@@ -156,7 +156,7 @@ exports.findUnderPrice = (req, res) => {
 
 exports.findGuests = (req, res) => {
   const { id } = req.params;
-  var query = {"vivienda._id": id};
+  let query = {"vivienda._id": id};
 
   Reserva.find(query)
       .then(data => {
@@ -171,7 +171,7 @@ exports.findGuests = (req, res) => {
 
 exports.findOverRating = (req, res) => {
   const { valoracion } = req.params;
-  var query = {"valoracion": {$gt: valoracion}};
+  let query = {"valoracion": {$gt: valoracion}};
 
   Vivienda.find(query)
       .then(data => {
@@ -182,4 +182,63 @@ exports.findOverRating = (req, res) => {
       .catch(err => {
             res.status(500).send({ message: "Error retrieving Viviendas over " + valoracion + "of rating"});
       });
+}
+
+exports.findGuestsOfOwner = (req, res) => {
+    const { id } = req.params;
+    let query = {"propietario.id": id};
+    let coleccion = [];
+    let vecesEnviado = 0;
+    let intData = 0;  
+    
+    Vivienda.find(query)
+      .then(data => {
+        if(data.length == 0){
+          res.status(404).send({message: "Not found Viviendas of Owner " + id});
+        } else {
+          data.map(d => {
+            let query2 = {"vivienda._id" : d._id};
+            Reserva.find(query2)
+                .then(data2 => {
+                    intData++;
+                    if(data2.length != 0){
+                      data2.map((d2, index2) => {
+                        coleccion.push(d2.persona);
+                        //console.log(intData)
+                        if(index2 == data2.length-1 && intData == data.length && vecesEnviado == 0){
+                          vecesEnviado++;
+                          res.send(coleccion)
+                        }
+                      })
+                    } else {
+                      if(intData == data.length && vecesEnviado == 0){
+                        vecesEnviado++;
+                        res.send(coleccion)
+                      }
+                    }
+                })
+                .catch(err => {
+                  res.status(500).send({ message: "Error retrieving Reservas of Viviendas of Owner " + id });
+                });
+          })
+        }
+      })
+      .catch(err => {
+            res.status(500).send({ message: "Error retrieving Viviendas of Owner " + id});
+      });
+
+}
+
+exports.findViviendasOfOwner = (req, res) => {
+  const { id } = req.params;
+  let query = {"propietario._id": id};
+
+  Vivienda.find(query)
+      .then(data => {
+          if(data.length == 0){
+            res.status(404).send({message: "Not found Viviendas of Owner " + id});
+          } else {
+            res.send(data);
+          }
+      })
 }
