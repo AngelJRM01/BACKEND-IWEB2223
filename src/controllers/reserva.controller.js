@@ -147,3 +147,22 @@ exports.findVivienda = (req, res) => {
             res.status(500).send({ message: "Error retrieving Vivienda from Reserva with id=" + id });
         });
 }
+
+// Retrieve all reservas of a person
+exports.findByPerson = (req, res) => {
+
+    const { id } = req.params;
+    var query = {"pesona._id": id};
+
+    Reserva.find(query)
+        .then(data => {
+            if (!data)
+                res.status(404).send({ message: "Not found Reserva with person id=" + id });
+            else res.json(data);
+        })
+        .catch(err => {
+            res.status(500).send({ message: "Error retrieving Reserva with person id=" + id });
+        }
+    );
+
+}

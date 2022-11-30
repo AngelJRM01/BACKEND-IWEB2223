@@ -26,4 +26,7 @@ router.get('/estancia/:fechaInicio', reservas.findByFutureDate);
 // Retrieve vivienda from a reserva
 router.get('/:id/vivienda', reservas.findVivienda);
 
+// Retrieve all reservas of a person
+router.get('/usuario/:id', reservas.findByPerson);
+
 module.exports = router;
