@@ -30,6 +30,17 @@ const Propietario = new Schema({
     }
 });
 
+const Coordenadas = new Schema({
+    latitud: {
+        type: Number,
+        required: true
+    },
+    longitud: {
+        type: Number,
+        required: true
+    }
+});
+
 const Vivienda = new Schema({
     titulo: {
         type: String,
@@ -47,6 +58,14 @@ const Vivienda = new Schema({
             validator: v => v.length >= 1
         },
         required: true
+    },
+    propietario: {
+        type: Propietario,
+        required: true
+    },
+    coordenadas: {
+        type: Coordenadas,
+        required: true
     }
 });
 
@@ -59,10 +78,6 @@ const ReservaSchema = new Schema({
     },
     estancia: {
         type: Estancia,
-        required: true
-    },
-    propietario: {
-        type: Propietario,
         required: true
     },
     huesped: {
