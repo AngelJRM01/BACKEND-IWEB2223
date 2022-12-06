@@ -152,7 +152,7 @@ exports.findVivienda = (req, res) => {
 exports.findByPerson = (req, res) => {
 
     const { id } = req.params;
-    var query = {"pesona._id": id};
+    var query = {"huesped": id};
 
     Reserva.find(query)
         .then(data => {
