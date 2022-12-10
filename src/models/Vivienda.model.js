@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-const FechasDisponibles = {
+const FechasNoDisponibles = {
     fechaInicio : Date,
     fechaFinal : Date
 }
@@ -33,8 +33,8 @@ const ViviendaSchema = new Schema({
         type: String,
         required: true
     },
-    fechasDisponibles: {
-        type: [FechasDisponibles],
+    fechasNoDisponibles: {
+        type: [FechasNoDisponibles],
         required: true
     },
     imagenes: {
