@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "4f3fdcab-8457-4266-8a0d-3e4c6778995a",
-		"name": "Backend",
+		"name": "SwishHouse-Backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21354009"
 	},
@@ -56,7 +56,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"capacidad\": 12,\n    \"descripcion\": \"descripcion\",\n    \"direccion\": \"direccion\",\n    \"estado\": \"ocupado\",\n    \"fechasDisponibles\": [\n        {\n            \"fechaInicio\": \"2012-04-23T18:25:43.511+00:00\",\n            \"fechaFin\": \"2012-04-23T18:25:43.511+00:00\"\n        }\n    ],\n    \"imagenes\": [\n        \"link1\",\n        \"link2\",\n        \"link3\"\n    ],\n    \"precioNoche\": 2.0,\n    \"titulo\": \"titulo\",\n    \"valoracion\": 3.5,\n    \"propietario\": {\n        \"nombre\": \"Nombre\",\n        \"foto\": \"Link foto\"\n    },\n    \"coordenadas\": {\n        \"latitud\": 0,\n        \"longitud\": 0\n    }\n}",
+					"raw": "        {\n        \"_id\": \"638a169e9970d796090dad5d\",\n        \"capacidad\": 5,\n        \"descripcion\": \"Probando si funciona editar\",\n        \"direccion\": \"Intentare que se haga con el mapa, al igual que las coordenadas\",\n        \"estado\": \"Libre\",\n        \"fechasDisponibles\": [\n            {\n                \"fechaInicio\": \"2022-04-23T18:25:43.511Z\",\n                \"_id\": \"638a169e9970d796090dad5e\"\n            },\n            {\n                \"fechaInicio\": \"2010-04-23T18:25:43.511Z\",\n                \"_id\": \"638a169e9970d796090dad5f\"\n            }\n        ],\n        \"imagenes\": [\n            \"https://a0.muscache.com/im/pictures/miso/Hosting-51897696/original/14bed3c2-7974-4b49-880f-b8ec1a701c30.jpeg?im_w=720\"\n        ],\n        \"precioNoche\": 3.33,\n        \"titulo\": \"Prueba para edit y create\",\n        \"valoracion\": 0,\n        \"propietario\": {\n            \"nombre\": \"Pepe\",\n            \"foto\": \"perfil.png\",\n            \"_id\": \"636a2eba353e6b6d0e281d7a\"\n        },\n        \"coordenadas\": {\n            \"latitud\": 43.3514000,\n            \"longitud\": -5.1291600,\n            \"_id\": \"638a169e9970d796090dad61\"\n        },\n        \"__v\": 0\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -75,7 +75,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "63681e6b3011712d0e07435b"
+							"value": "638a169e9970d796090dad5d"
 						}
 					]
 				}
@@ -123,7 +123,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "63681e6b3011712d0e07435b"
+							"value": "6398770595651e2d3cebcd35"
 						}
 					]
 				}
@@ -181,97 +181,24 @@
 			"response": []
 		},
 		{
-			"name": "/viviendas?direccion={direccion}",
+			"name": "/viviendas/propietario/{id}",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base:url}}/viviendas?direccion=direccion",
-					"host": [
-						"{{base:url}}"
-					],
-					"path": [
-						"viviendas"
-					],
-					"query": [
-						{
-							"key": "direccion",
-							"value": "direccion"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/viviendas/estado/{estado}",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base:url}}/viviendas/estado/:estado",
+					"raw": "{{base:url}}/viviendas/propietario/:id",
 					"host": [
 						"{{base:url}}"
 					],
 					"path": [
 						"viviendas",
-						"estado",
-						":estado"
+						"propietario",
+						":id"
 					],
 					"variable": [
 						{
-							"key": "estado",
-							"value": "ocupado"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/viviendas/precio/{precio}",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base:url}}/viviendas/precio/:precio",
-					"host": [
-						"{{base:url}}"
-					],
-					"path": [
-						"viviendas",
-						"precio",
-						":precio"
-					],
-					"variable": [
-						{
-							"key": "precio",
-							"value": "2.4"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/viviendas/valoracion/{valoracion}",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base:url}}/viviendas/valoracion/:valoracion",
-					"host": [
-						"{{base:url}}"
-					],
-					"path": [
-						"viviendas",
-						"valoracion",
-						":valoracion"
-					],
-					"variable": [
-						{
-							"key": "valoracion",
-							"value": "3.0"
+							"key": "id",
+							"value": "1"
 						}
 					]
 				}
@@ -296,7 +223,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "636a2eba353e6b6d0e281d7a"
 						}
 					]
 				}
@@ -304,25 +231,82 @@
 			"response": []
 		},
 		{
-			"name": "/viviendas/propietario/{id}",
+			"name": "/viviendas/filtro",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base:url}}/viviendas/propietario/:id",
+					"raw": "{{base:url}}/viviendas/filtro?valoracion=0&precio=100&estado=libre&direccion=badajoz&capacidad=10&lat=38&lon=-6&prox=1&propietario=pepe&fechaInicio=2023-02-01T23:00:00.000Z&fechaFinal=2023-03-26T23:00:00.000Z",
 					"host": [
 						"{{base:url}}"
 					],
 					"path": [
 						"viviendas",
-						"propietario",
-						":id"
+						"filtro"
 					],
-					"variable": [
+					"query": [
 						{
-							"key": "id",
+							"key": "valoracion",
+							"value": "0"
+						},
+						{
+							"key": "precio",
+							"value": "100"
+						},
+						{
+							"key": "estado",
+							"value": "libre"
+						},
+						{
+							"key": "direccion",
+							"value": "badajoz"
+						},
+						{
+							"key": "capacidad",
+							"value": "10"
+						},
+						{
+							"key": "lat",
+							"value": "38"
+						},
+						{
+							"key": "lon",
+							"value": "-6"
+						},
+						{
+							"key": "prox",
 							"value": "1"
+						},
+						{
+							"key": "propietario",
+							"value": "pepe"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "2023-02-01T23:00:00.000Z"
+						},
+						{
+							"key": "fechaFinal",
+							"value": "2023-03-26T23:00:00.000Z"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/propietarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/propietarios",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"propietarios"
 					]
 				}
 			},
