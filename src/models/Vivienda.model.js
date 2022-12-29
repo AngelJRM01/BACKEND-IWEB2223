@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model, SchemaTypes} = require('mongoose');
 
 const FechasNoDisponibles = {
     fechaInicio : Date,
@@ -15,6 +15,68 @@ const Coordenadas = {
     latitud : Number,
     longitud : Number
 }
+
+const Respuesta = new Schema({
+    fecha: {
+        type: Date,
+        immutable: true,
+        default: () => Date.now(),
+        required: true
+    },
+    vivienda: {
+        type: SchemaTypes.ObjectId,
+        required: true
+    },
+    usuario: {
+        type: String,
+        required: true
+    },
+    likes: {
+        type: [String],
+        required: true
+    },
+    dislikes: {
+        type: [String],
+        required: true
+    },
+    mensaje: {
+        type: String,
+        required: true
+    }
+});
+
+const Comentario = new Schema({
+    fecha: {
+        type: Date,
+        immutable: true,
+        default: () => Date.now(),
+        required: true
+    },
+    vivienda: {
+        type: SchemaTypes.ObjectId,
+        required: true
+    },
+    usuario: {
+        type: String,
+        required: true
+    },
+    likes: {
+        type: [String],
+        required: true
+    },
+    dislikes: {
+        type: [String],
+        required: true
+    },
+    mensaje: {
+        type: String,
+        required: true
+    },
+    respuestas: {
+        type: [Respuesta],
+        required: true
+    }
+})
 
 const ViviendaSchema = new Schema({
     capacidad: {
@@ -59,6 +121,10 @@ const ViviendaSchema = new Schema({
     },
     coordenadas: {
         type: Coordenadas,
+        required: true
+    },
+    comentarios: {
+        type: [Comentario],
         required: true
     }
 })
