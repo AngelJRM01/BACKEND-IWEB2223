@@ -1,6 +1,7 @@
 const express = require('express');
 const viviendas = require('../controllers/vivienda.controller.js');
 const router = express.Router();
+const { validateAccessToken } = require("../middleware/auth0.js");
 
 // Create a new vivienda
 router.post('/', viviendas.create);
@@ -33,7 +34,7 @@ router.get('/:id/huespedes', viviendas.findGuests);
 router.get('/propietarioHuespedes/:id', viviendas.findGuestsOfOwner);
 
 // Retrieve all viviendas from a owner
-router.get('/propietario/:id', viviendas.findViviendasOfOwner);
+router.get('/propietario/:id', validateAccessToken, viviendas.findViviendasOfOwner);
 
 
 module.exports = router;
