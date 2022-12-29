@@ -176,7 +176,7 @@ exports.findViviendasOfOwner = (req, res) => {
   Vivienda.find(query)
     .then(data => {
       if (data.length == 0) {
-        res.status(404).send({ message: "Not found Viviendas of Owner " + id });
+        res.send([])
       } else {
         res.send(data);
       }
