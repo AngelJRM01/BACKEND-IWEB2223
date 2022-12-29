@@ -1,19 +1,28 @@
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const FechasNoDisponibles = {
-    fechaInicio : Date,
-    fechaFinal : Date
+    fechaInicio: Date,
+    fechaFinal: Date
 }
 
 const Propietario = {
-    id : String,
-    nombre : String,
-    foto : String
+    id: String,
+    nombre: String,
+    foto: String
 }
 
 const Coordenadas = {
-    latitud : Number,
-    longitud : Number
+    latitud: Number,
+    longitud: Number
+}
+
+const Valoracion = {
+    usuario: String,
+    valoracion: {
+        type: Number,
+        max: 5,
+        min: 0
+    }
 }
 
 const ViviendaSchema = new Schema({
@@ -28,8 +37,8 @@ const ViviendaSchema = new Schema({
     direccion: {
         type: String,
         required: true
-    },    
-    estado:{
+    },
+    estado: {
         type: String,
         required: true
     },
@@ -59,6 +68,10 @@ const ViviendaSchema = new Schema({
     },
     coordenadas: {
         type: Coordenadas,
+        required: true
+    },
+    valoraciones: {
+        type: [Valoracion],
         required: true
     }
 })
