@@ -1,4 +1,4 @@
-const express = require( 'express' );
+const express = require('express');
 const viviendas = require('../controllers/vivienda.controller.js');
 const router = express.Router();
 
@@ -7,6 +7,12 @@ router.post('/', viviendas.create);
 
 //Retrieve all viviendas
 router.get('/', viviendas.findAll);
+
+// Retrieve viviendas by filter
+router.get('/filtro', viviendas.findByFiltro)
+
+// Retrieve all propietarios
+router.get('/propietarios', viviendas.findOwners);
 
 // Retrieve a single vivienda with id
 router.get('/:id', viviendas.findOne);
@@ -20,22 +26,14 @@ router.delete('/:id', viviendas.delete);
 // Retrieve all reservas from a vivienda
 router.get('/:id/reservas', viviendas.findReservas);
 
-// Retrieve all viviendas with estado. Angel FC
-router.get('/estado/:estado', viviendas.findByEstado);
-
-// Retrieve all viviendas under a price. Galo
-router.get('/precio/:precio', viviendas.findUnderPrice);
-
 // Retrieve all guests from a vivienda
 router.get('/:id/huespedes', viviendas.findGuests);
-
-// Retrieve all viviendas over a price
-router.get('/valoracion/:valoracion', viviendas.findOverRating);
 
 // Retrieve all guests from a owner
 router.get('/propietarioHuespedes/:id', viviendas.findGuestsOfOwner);
 
 // Retrieve all viviendas from a owner
 router.get('/propietario/:id', viviendas.findViviendasOfOwner);
+
 
 module.exports = router;
