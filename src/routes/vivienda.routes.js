@@ -22,7 +22,7 @@ router.get('/:id', viviendas.findOne);
 router.put('/:id', validateAccessToken, viviendas.update);
 
 // Delete a vivienda with id
-router.delete('/:id', viviendas.delete);
+router.delete('/:id', validateAccessToken, viviendas.delete);
 
 // Retrieve all reservas from a vivienda
 router.get('/:id/reservas', viviendas.findReservas);
