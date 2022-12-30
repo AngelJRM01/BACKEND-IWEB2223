@@ -25,7 +25,7 @@ router.put('/:id', validateAccessToken, viviendas.update);
 router.delete('/:id', validateAccessToken, viviendas.delete);
 
 // Retrieve all reservas from a vivienda
-router.get('/:id/reservas', viviendas.findReservas);
+router.get('/:id/reservas', validateAccessToken, viviendas.findReservas);
 
 // Retrieve all guests from a vivienda
 router.get('/:id/huespedes', viviendas.findGuests);
