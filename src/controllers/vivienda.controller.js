@@ -358,7 +358,7 @@ exports.updateRating = (req, res) => {
 
         if (data.valoraciones.length > 0) {
           let rates = data.valoraciones.map((rate) => rate.valoracion);
-          newRating = (rates.reduce((a, b) => a + b, 0) / rates.length);
+          newRating = (rates.reduce((a, b) => a + b, 0) / rates.length).toFixed(1);
         }
 
         Vivienda.findByIdAndUpdate(id, { valoracion: newRating })
@@ -367,7 +367,7 @@ exports.updateRating = (req, res) => {
               res.status(404).send({
                 message: `Cannot update rating of Vivienda with id ${id}. Maybe Vivienda was not found!`
               });
-            } else res.status(200).send({ message: "Vivienda was updated successfully." });
+            } else res.status(200).send({ message: "Vivienda was updated successfully with rating " + newRating});
           })
           .catch(err => {
             res.status(500).send({
