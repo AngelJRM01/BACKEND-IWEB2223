@@ -49,7 +49,7 @@ const Vivienda = new Schema({
     },
     direccion: {
         type: String,
-        maxLength: 50,
+        maxLength: 200,
         required: true
     },
     imagenes: {
