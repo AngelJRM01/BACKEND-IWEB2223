@@ -10,7 +10,7 @@ exports.create = (req, res) => {
     console.log(req.body);
     // Create a Reserva
     const reserva = new Reserva(req.body);
-    
+    console.log(reserva);
     // Save Reserva in the database
     reserva
         .save(reserva)
