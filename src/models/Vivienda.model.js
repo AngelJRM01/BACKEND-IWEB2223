@@ -18,7 +18,6 @@ const Coordenadas = {
 }
 
 const Valoracion = {
-    usuario: String,
     valoracion: {
         type: Number,
         max: 5,

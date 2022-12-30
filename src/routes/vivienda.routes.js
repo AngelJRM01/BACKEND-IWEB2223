@@ -36,5 +36,13 @@ router.get('/propietarioHuespedes/:id', viviendas.findGuestsOfOwner);
 // Retrieve all viviendas from a owner
 router.get('/propietario/:id', validateAccessToken, viviendas.findViviendasOfOwner);
 
+// Create new valoracion
+router.put('/valoracion/:id', viviendas.addRating);
+
+// Get user valoracion
+router.get('/valoracion/:id', viviendas.getRating);
+
+// Update rating
+router.put('/actualizar/:id', viviendas.updateRating);
 
 module.exports = router;
