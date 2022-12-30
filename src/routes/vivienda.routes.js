@@ -4,7 +4,7 @@ const router = express.Router();
 const { validateAccessToken } = require("../middleware/auth0.js");
 
 // Create a new vivienda
-router.post('/', viviendas.create);
+router.post('/', validateAccessToken, viviendas.create);
 
 //Retrieve all viviendas
 router.get('/', viviendas.findAll);
@@ -19,7 +19,7 @@ router.get('/propietarios', viviendas.findOwners);
 router.get('/:id', viviendas.findOne);
 
 // Update a vivienda with id
-router.put('/:id', viviendas.update);
+router.put('/:id', validateAccessToken, viviendas.update);
 
 // Delete a vivienda with id
 router.delete('/:id', viviendas.delete);

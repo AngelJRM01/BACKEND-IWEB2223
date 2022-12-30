@@ -7,7 +7,7 @@ exports.create = (req, res) => {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
-    
+    console.log(req.body);
     // Create a Reserva
     const reserva = new Reserva(req.body);
     
