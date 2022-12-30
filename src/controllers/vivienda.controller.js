@@ -278,3 +278,109 @@ exports.findByFiltro = (req, res) => {
     });
 
 }
+
+exports.addRating = (req, res) => {
+  const id = req.params.id;
+  const user = req.query.usuario;
+  const valoracion = req.query.valoracion;
+
+  Vivienda.findById(id)
+    .then(data => {
+      if (data) {
+
+        if (data.valoraciones.filter((rate) => rate._id == user).length > 0) {
+          data.valoraciones.filter((rate) => rate._id == user)[0].valoracion = valoracion;
+        } else {
+          data.valoraciones.push({
+            valoracion: valoracion,
+            _id: user
+          })
+        }
+
+        Vivienda.findByIdAndUpdate(id, data)
+          .then(data => {
+            if (!data) {
+              res.status(404).send({
+                message: `Cannot rate Vivienda with id ${id}. Maybe Vivienda was not found!`
+              });
+            } else res.status(200).send({ message: "Vivienda was rated successfully." });
+          })
+          .catch(err => {
+            res.status(500).send({
+              message: "Error rating Vivienda with id " + id
+            });
+          });
+
+      } else {
+        res.status(404).send({ message: "Not found Vivienda with id " + id });
+      }
+
+    })
+    .catch(err => {
+      res.status(500).send({ message: "Error retrieving Vivienda with id " + id });
+    });
+}
+
+exports.getRating = (req, res) => {
+  const id = req.params.id;
+  const user = req.query.usuario;
+
+  Vivienda.findById(id)
+    .then(data => {
+      if (data) {
+
+        rate = data.valoraciones.filter((rate) => rate._id == user);
+
+        if (rate.length > 0) {
+          res.status(200).send({ rating: rate[0].valoracion });
+        } else {
+          res.status(200).send({ rating: 0 });
+        }
+
+      } else {
+        res.status(404).send({ message: "Not found Vivienda with id " + id });
+      }
+
+    })
+    .catch(err => {
+      res.status(500).send({ message: "Error retrieving Vivienda with id " + id });
+    });
+}
+
+exports.updateRating = (req, res) => {
+  const id = req.params.id;
+
+  Vivienda.findById(id)
+    .then(data => {
+      if (data) {
+
+        let newRating = 0;
+
+        if (data.valoraciones.length > 0) {
+          let rates = data.valoraciones.map((rate) => rate.valoracion);
+          newRating = (rates.reduce((a, b) => a + b, 0) / rates.length);
+        }
+
+        Vivienda.findByIdAndUpdate(id, { valoracion: newRating })
+          .then(data => {
+            if (!data) {
+              res.status(404).send({
+                message: `Cannot update rating of Vivienda with id ${id}. Maybe Vivienda was not found!`
+              });
+            } else res.status(200).send({ message: "Vivienda was updated successfully." });
+          })
+          .catch(err => {
+            res.status(500).send({
+              message: "Error updated Vivienda with id " + id
+            });
+          });
+
+      } else {
+        res.status(404).send({ message: "Not found Vivienda with id " + id });
+      }
+
+    })
+    .catch(err => {
+      res.status(500).send({ message: "Error retrieving Vivienda with id " + id });
+    });
+}
