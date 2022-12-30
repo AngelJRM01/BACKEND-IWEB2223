@@ -1,6 +1,7 @@
 const express = require( 'express' );
 const reservas = require('../controllers/reserva.controller.js');
 const router = express.Router();
+const { validateAccessToken } = require("../middleware/auth0.js");
 
 // Create a new reserva
 router.post('/', reservas.create);
@@ -27,6 +28,6 @@ router.get('/estancia/:fechaInicio', reservas.findByFutureDate);
 router.get('/:id/vivienda', reservas.findVivienda);
 
 // Retrieve all reservas of a person
-router.get('/usuario/:id', reservas.findByPerson);
+router.get('/usuario/:id', validateAccessToken, reservas.findByPerson);
 
 module.exports = router;
