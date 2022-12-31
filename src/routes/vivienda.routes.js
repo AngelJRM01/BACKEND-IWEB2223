@@ -28,21 +28,21 @@ router.delete('/:id', validateAccessToken, viviendas.delete);
 router.get('/:id/reservas', validateAccessToken, viviendas.findReservas);
 
 // Retrieve all guests from a vivienda
-router.get('/:id/huespedes', viviendas.findGuests);
+router.get('/:id/huespedes', validateAccessToken, viviendas.findGuests);
 
 // Retrieve all guests from a owner
-router.get('/propietarioHuespedes/:id', viviendas.findGuestsOfOwner);
+router.get('/propietarioHuespedes/:id', validateAccessToken, viviendas.findGuestsOfOwner);
 
 // Retrieve all viviendas from a owner
 router.get('/propietario/:id', validateAccessToken, viviendas.findViviendasOfOwner);
 
 // Create new valoracion
-router.put('/valoracion/:id', viviendas.addRating);
+router.put('/valoracion/:id', validateAccessToken, viviendas.addRating);
 
 // Get user valoracion
-router.get('/valoracion/:id', viviendas.getRating);
+router.get('/valoracion/:id', validateAccessToken, viviendas.getRating);
 
 // Update rating
-router.put('/actualizar/:id', viviendas.updateRating);
+router.put('/actualizar/:id', validateAccessToken, viviendas.updateRating);
 
 module.exports = router;
