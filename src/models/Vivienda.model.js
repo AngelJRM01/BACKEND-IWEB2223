@@ -40,6 +40,10 @@ const Respuesta = new Schema({
         type: String,
         required: true
     },
+    imagenUsuario: {
+        type: String,
+        required: true
+    },
     likes: {
         type: [String],
         required: true
