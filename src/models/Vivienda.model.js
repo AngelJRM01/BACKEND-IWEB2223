@@ -1,4 +1,4 @@
-const {Schema, model, SchemaTypes} = require('mongoose');
+const {Schema, model, SchemaTypes, trusted} = require('mongoose');
 
 
 const FechasNoDisponibles = {
@@ -66,6 +66,10 @@ const Comentario = new Schema({
         required: true
     },
     usuario: {
+        type: String,
+        required: true
+    },
+    imagenUsuario: {
         type: String,
         required: true
     },
