@@ -1,15 +1,15 @@
-require('./database');
+require('./src/database');
 
 const express = require("express");
 const app = express();
 
 const formidableMiddleware = require('express-formidable');
 
-const reservaRoutes = require('./routes/reserva.routes');
-const viviendaRoutes = require('./routes/vivienda.routes');
-const imagesRoutes = require('./routes/images.routes');
-const { errorHandler } = require("./middleware/error");
-const { notFoundHandler } = require("./middleware/not-found");
+const reservaRoutes = require('./src/routes/reserva.routes');
+const viviendaRoutes = require('./src/routes/vivienda.routes');
+const imagesRoutes = require('./src/routes/images.routes');
+const { errorHandler } = require("./src/middleware/error");
+const { notFoundHandler } = require("./src/middleware/not-found");
 const cors = require('cors');
 app.use(cors());
 app.use(express.json());
