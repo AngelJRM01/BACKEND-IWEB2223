@@ -7,6 +7,32 @@
 	},
 	"item": [
 		{
+			"name": "oauth",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjVCcDk1T05TM2RTdDhmYXgzS3R3RiJ9.eyJpc3MiOiJodHRwczovL2Rldi01eTU4aWdqamVqemdrdjJqLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJieldRZ3ZrWHBkbTJOOFNBMTJCWUxaQ1J0a0d6bEFFVkBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9zd2lzaGhvdXNlLWFwaSIsImlhdCI6MTY3MjQxMjY0MiwiZXhwIjoxNjcyNDk5MDQyLCJhenAiOiJieldRZ3ZrWHBkbTJOOFNBMTJCWUxaQ1J0a0d6bEFFViIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.W2si08SDq7-tXkPNWMtScXj5-zgAurF8UDMagIU1x-ziaAETQXYRDavT-xwShTE1vLQF7KMYOPn7BW9MoRNbQjzYxG4Yrk2Zc0mHsXuOWCjqgiS6skFUoB2Wi12RG6o39iG-F7doe8djKeeNShxa3zUpXoFxIRp1THbvFtgXUNFDO2nYUtEVQ8-XGYf7JZtG5wItpcPMB0jqp4UOE01AhNfeUpsfJiTtINqjsrXqaR2adQMVhrDfhjV2G3Uj30Z7y5vFS7MTfX729Uz8667wIfd1zkyYj9GzQXsTb1uKkWc8U2hdNdEWvyBE3QzNQTe7sJ8DP4KbujRreiaXqB-ZBQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:4000/viviendas/propietario/000109170579436232470154",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"viviendas",
+						"propietario",
+						"000109170579436232470154"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "/viviendas",
 			"request": {
 				"method": "GET",
@@ -18,6 +44,114 @@
 					],
 					"path": [
 						"viviendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/valoracion/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/valoracion/:id?usuario=000112225828104773569769&valoracion=2",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"valoracion",
+						":id"
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "000112225828104773569769"
+						},
+						{
+							"key": "valoracion",
+							"value": "2"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "639a1ae045608bce9ee75ddb"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/valoracion/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/valoracion/:id?usuario=000112225828104773569769",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"valoracion",
+						":id"
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "000112225828104773569769"
+						},
+						{
+							"key": "valoracion",
+							"value": "5",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "639a1ae045608bce9ee75ddb"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/viviendas/actualizar/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base:url}}/viviendas/actualizar/:id",
+					"host": [
+						"{{base:url}}"
+					],
+					"path": [
+						"viviendas",
+						"actualizar",
+						":id"
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "000109170579436232470154",
+							"disabled": true
+						},
+						{
+							"key": "valoracion",
+							"value": "5",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "639a1ae045608bce9ee75ddb"
+						}
 					]
 				}
 			},
@@ -123,7 +257,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6398770595651e2d3cebcd35"
+							"value": "639a1ae045608bce9ee75ddb"
 						}
 					]
 				}
@@ -236,7 +370,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base:url}}/viviendas/filtro?valoracion=0&precio=100&estado=libre&direccion=badajoz&capacidad=10&lat=38&lon=-6&prox=1&propietario=pepe&fechaInicio=2023-02-01T23:00:00.000Z&fechaFinal=2023-03-26T23:00:00.000Z",
+					"raw": "{{base:url}}/viviendas/filtro?",
 					"host": [
 						"{{base:url}}"
 					],
@@ -247,47 +381,52 @@
 					"query": [
 						{
 							"key": "valoracion",
-							"value": "0"
+							"value": "0",
+							"disabled": true
 						},
 						{
 							"key": "precio",
-							"value": "100"
+							"value": "100",
+							"disabled": true
 						},
 						{
 							"key": "estado",
-							"value": "libre"
+							"value": "libre",
+							"disabled": true
 						},
 						{
 							"key": "direccion",
-							"value": "badajoz"
+							"value": "badajoz",
+							"disabled": true
 						},
 						{
 							"key": "capacidad",
-							"value": "10"
+							"value": "10",
+							"disabled": true
 						},
 						{
 							"key": "lat",
-							"value": "38"
+							"value": "38",
+							"disabled": true
 						},
 						{
 							"key": "lon",
-							"value": "-6"
+							"value": "-6",
+							"disabled": true
 						},
 						{
 							"key": "prox",
-							"value": "1"
+							"value": "1",
+							"disabled": true
 						},
 						{
 							"key": "propietario",
-							"value": "pepe"
+							"value": "pepe",
+							"disabled": true
 						},
 						{
-							"key": "fechaInicio",
-							"value": "2023-02-01T23:00:00.000Z"
-						},
-						{
-							"key": "fechaFinal",
-							"value": "2023-03-26T23:00:00.000Z"
+							"key": "",
+							"value": null
 						}
 					]
 				}
